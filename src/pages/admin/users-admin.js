@@ -2,6 +2,48 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
 import clientHttp from '../../services/ClientHttp';
 
+export const UserCreate=()=>{
+    const [ usuario,setUsuario]=useState({});
+    
+    
+    const [loading,setLoading]=useState(true);
+    const { userId } = useParams();
+
+    const navegacion = useNavigate();
+
+    useEffect(()=>{
+        clientHttp.post(`/Usuario`)
+            .then((response)=>{
+                setUsuario(response.data);
+                setLoading(false);
+            });
+    },[]);
+    const handleChange = (event) => {
+        const target = event.target;
+        const value = target.type === "checkbox" ? target.checked : target.value;
+        const name = target.id;         
+        setUsuario((userCurrent)=>({...userCurrent,[name]: value}));
+   };
+
+   
+   const handleSubmit= (event) => {
+       event.preventDefault();
+       if (event.target.checkValidity() === true) {
+           var activo
+           if(active===undefined){
+               activo = false
+           }else{
+               activo = active
+           }
+           clientHttp.put(`/Usuario?entidadId=${userId}&active=${activo}`,usuario)
+               .then((response)=>{
+                   navegacion(`/admin/users`)
+               });
+       }
+     }
+     const {active} = usuario;
+}
+
 export const UserEdit=()=>{
     
     const [ usuario,setUsuario]=useState({});

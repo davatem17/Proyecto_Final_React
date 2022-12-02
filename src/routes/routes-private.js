@@ -3,7 +3,7 @@
 import ClientsAdmin, { ClientEdit } from "../pages/admin/clients-admin";
 import ProductAdmin from "../pages/admin/products-admin";
 
-import UserAdmin, { UserEdit } from "../pages/admin/users-admin";
+import UserAdmin, { UserCreate, UserEdit } from "../pages/admin/users-admin";
 
 
 export default [
@@ -42,6 +42,13 @@ export default [
         key: "users-edit-admin",
         route: "/admin/users/:userId",
         component: <UserEdit />,
+        showLink: false
+    },
+    {
+        name: "Crear Usuarios ",
+        key: "users-create-admin",
+        route: "/admin/users/create",
+        component: <UserCreate />,
         showLink: false
     }
 

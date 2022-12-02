@@ -4,29 +4,7 @@ import clientHttp from '../../services/ClientHttp';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-function Modals() {
-    return (
-        <div
-            className="modal show"
-            style={{ display: 'block', position: 'initial' }}
-        >
-            <Modal.Dialog>
-                <Modal.Header closeButton>
-                    <Modal.Title>Modal title</Modal.Title>
-                </Modal.Header>
 
-                <Modal.Body>
-                    <p>Modal body text goes here.</p>
-                </Modal.Body>
-
-                <Modal.Footer>
-                    <Button variant="secondary">Close</Button>
-                    <Button variant="primary">Save changes</Button>
-                </Modal.Footer>
-            </Modal.Dialog>
-        </div>
-    );
-}
 
 export const UserCreate = () => {
     const [usuario, setUsuario] = useState({
@@ -70,7 +48,7 @@ export const UserCreate = () => {
                     <input type="text" className="form-control" id="user"
                         value={user} onChange={e => handleChange(e)} required maxLength="30" />
                     <div className="invalid-feedback">
-                        Identificación es obligatoria
+                        User es obligatoria
                     </div>
                 </div>
             </div>
@@ -81,7 +59,7 @@ export const UserCreate = () => {
                     <input type="checkbox" id="active"
                         value={active} onChange={e => handleChange(e)} />
                     <div className="invalid-feedback">
-                        Identificación es obligatoria
+                        Active es obligatoria
                     </div>
                 </div>
             </div>
